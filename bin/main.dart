@@ -5,7 +5,7 @@ Future main() async {
   await db.open();
   print('Connected to Data Base');
 
-  //Access the Collection
+  //Access the Collection to check the documents
   DbCollection Collection=db.collection('OrderDetails');
 
   //get data from Collections
@@ -13,7 +13,7 @@ Future main() async {
   print(details);
 
 
-  // Save to the DataBase
+  // Save document to the DataBase
   await Collection.save(
     {
       "src": "https://cdn.pixabay.com/photo/2014/01/24/04/05/fried-chicken-250863_1280.jpg",
@@ -39,8 +39,7 @@ Future main() async {
 
   print('Updated Person ${await Collection.findOne(where.eq('mobile', '9963394267'))}');
 
-  // Delete a Collection
-
+  // To delete a Document
   await Collection.remove(await Collection.findOne(where.eq('mobile', '9963394267')));
   print('Collection Deleted ${await Collection.findOne(where.eq('mobile', '9963394267'))}');
 }
